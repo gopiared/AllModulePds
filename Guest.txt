@@ -1,0 +1,36 @@
+public bool AddGuest(Guest newGuest)
+        {
+            bool guestAdded = false;
+            int oldCount = guestList.Count;
+            guestList.Add(newGuest);
+            int newCount = guestList.Count;
+            if (newCount > oldCount)
+                guestAdded = true;
+            return guestAdded;
+        }
+
+        public List<Guest> GetAllGuests()
+        {
+            return guestList;
+        }
+
+
+        public Guest ShowGuest(int guestNumber)
+        {
+            return guestList.First(g => g.GuestNo == guestNumber);
+        }
+
+        public Guest UpdateGuest(Guest updateGuest)
+        {
+            Guest guest = guestList.First(g => g.GuestNo == updateGuest.GuestNo);
+            guest.GuestName = updateGuest.GuestName;
+            guest.PhoneNumber = updateGuest.PhoneNumber;
+            return guest;
+
+        }
+        public bool RemoveGuest(int id)
+        {
+            Guest gs = guestList.First(g => g.GuestNo == id);
+            return guestList.Remove(gs);
+        }
+    }
